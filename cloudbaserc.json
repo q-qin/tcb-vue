@@ -23,7 +23,7 @@
           "functionRootPath": "cloudfunctions",
           "functions": [
             {
-              "name": "helloword",
+              "name": "helloworld",
               "timeout": 5,
               "envVariables": {},
               "runtime": "Nodejs10.15",
