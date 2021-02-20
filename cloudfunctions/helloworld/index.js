@@ -4,11 +4,8 @@ exports.main = async (event, context) => {
   const app = cloud.init({
     env: cloud.SYMBOL_CURRENT_ENV,
   });
-
   const db = app.database();
-  const data = await db.collection(event.database || 'all_goods').where({
-    title: event.title || ''
-  })
+  const data = await db.collection('all_goods').where({})
   .get();
 
   // todo
