@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'; // progress bar style
 import { getToken } from '@/utils/jscookie'; // get token from cookie
 import getPageTitle from '@/utils/get-page-title';
 
-NProgress.configure({ showSpinner: false }); // NProgress Configuration
+// NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
 const whiteList = ['/user/login', '/user/register']; // no redirect whitelist
 router.beforeEach(async (to, from, next) => {
