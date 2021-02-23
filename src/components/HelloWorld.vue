@@ -49,38 +49,35 @@
     </a>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import {getApp} from '@/tcb';
 
-<script>
-export default {
-  name: "HelloWorld",
-  data() {
-    return {
-      envId: "",
-      callFunctionResult: "",
-    };
-  },
-  props: {
-    msg: String,
-  },
-  methods: {
-    async callFunction() {
-      try {
-        const res = await this.$cloudbase.callFunction({
-          name: "helloworld",
-          data: {
-            foo: "bar",
-          },
-        });
-        this.callFunctionResult = res;
-      } catch (e) {
-        console.error(e)
-        this.callFunctionResult = e.message;
-      }
-    },
-  },
-};
+const app = getApp();
+
+@Component({
+  components: { },
+  mixins: []
+})
+export default class HelloWorld extends Vue {
+  @Prop() private msg!: string;
+  private callFunctionResult ="";
+  async callFunction(){
+    try {
+      const res = await app.callFunction({
+        name: "helloworld",
+        data: {
+          foo: "bar",
+        },
+      });
+      this.callFunctionResult = res;
+    } catch (e) {
+      console.error(e)
+      this.callFunctionResult = e.message;
+    }
+  }
+}
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   h3 {
