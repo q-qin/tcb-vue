@@ -8,9 +8,7 @@ export const getApp = () => {
     env: envId,
   });
 
-  app.auth({
-    persistence: "local",
-  });
+  app.auth().anonymousAuthProvider().signIn();
 
   return app;
 };

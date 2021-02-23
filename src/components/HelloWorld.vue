@@ -60,8 +60,8 @@ const app = getApp();
   mixins: []
 })
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-  private callFunctionResult ="";
+  @Prop() msg!: string;
+  callFunctionResult ="";
   async callFunction(){
     try {
       const res = await app.callFunction({
