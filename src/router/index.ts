@@ -16,9 +16,17 @@ const routes: Array<RouteConfig> = [
   {
     path:'/user/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/User/Login.vue'),
+    component: () => import(/* webpackChunkName: "user" */ '../views/User/Login.vue'),
     meta:{
       title:'登录'
+    }
+  },
+  {
+    path:'/user/register',
+    name: 'Register',
+    component: () => import(/* webpackChunkName: "user" */ '../views/User/Register.vue'),
+    meta:{
+      title:'注册'
     }
   },
   {

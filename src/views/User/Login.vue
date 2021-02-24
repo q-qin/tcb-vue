@@ -39,7 +39,7 @@
               <a>
                 <a-icon class="item-icon" type="weibo-circle"></a-icon>
               </a>
-              <router-link class="register" :to="{ name: 'register' }"
+              <router-link class="register" to="/user/register"
                 >注册账户</router-link
               >
             </a-form-model-item>
@@ -105,7 +105,7 @@
               <a>
                 <a-icon class="item-icon" type="weibo-circle"></a-icon>
               </a>
-              <router-link class="register" :to="{ name: 'register' }"
+              <router-link class="register" to="/user/register"
                 >注册账户</router-link
               >
             </a-form-model-item>
@@ -128,13 +128,12 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { login } from '@/api/user';
 import { setToken } from '@/utils/jscookie';
 
 @Component({
   components: { },
-  mixins: [],
 })
 export default class Login extends Vue {
   // data

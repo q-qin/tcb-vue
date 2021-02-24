@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "deploy": "cloudbase framework deploy",
-    "deploy:client": "cloudbase framework deploy client",
-    "deploy:server": "cloudbase framework deploy server",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy:client": "cloudbase framework deploy client",
+    "deploy:server": "cloudbase framework deploy server",
+    "deploy": "cloudbase framework deploy"
   },
   "dependencies": {
     "ant-design-vue": "^1.7.3",
