@@ -163,26 +163,30 @@ export default class Login extends Vue {
     console.log("getter:", this.$store.getters.token);
     // mixins混入数据，可以做搜索条件
   }
+  get getformPass():Vue & { validate: () => boolean } {
+    return this.$refs.formPass as Vue & { validate: () => boolean }
+  }
+
   // 密码登录
-  loginPass() {
-     this.$refs.formPass.validate( async (valid: Boolean) => {
-        if (valid) {
-          this.loginBtn = true;
-          login({
-              ...this.formPass
-          }).then((result)=>{
-            const {code,data,msg} = result.result;
-            if(code == 200){
-              setToken(data);
-              this.$router.replace('/');
-            }else{
-              this.$message.error(msg);
-            }
-          }).catch(e=>{
+  async loginPass() {
+     const valid = await this.getformPass.validate()
+      if (valid) {
+        this.loginBtn = true;
+        login({
+            ...this.formPass
+        }).then((result)=>{
+          const {code,data,msg} = (result as any ).result;
+          if(code == 200){
+            setToken(data);
+            this.$router.replace('/');
+          }else{
+            this.$message.error(msg);
             this.loginBtn = false;
-          })
-        }
-     })
+          }
+        }).catch(e=>{
+          this.loginBtn = false;
+        })
+      }
   }
   loginSms(){
 
