@@ -154,15 +154,9 @@ export default class Login extends Vue {
 
   state = {
     time: 60,
-    // login type: 0 email, 1 username, 2 telephone
     smsSendBtn: false,
   };
 
-  // created
-  private async created() {
-    console.log("getter:", this.$store.getters.token);
-    // mixins混入数据，可以做搜索条件
-  }
   get getformPass():Vue & { validate: () => boolean } {
     return this.$refs.formPass as Vue & { validate: () => boolean }
   }
