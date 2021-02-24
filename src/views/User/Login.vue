@@ -72,35 +72,54 @@
               />
             </a-input>
           </a-form-model-item>
-
-          <a-row :gutter="16">
-            <a-col class="gutter-row" :span="16">
-              <a-form-model-item>
-                <a-input
-                  size="large"
-                  type="text"
-                  placeholder="验证码"
-                  v-model="formSms.captcha"
-                >
-                  <a-icon
-                    slot="prefix"
-                    type="mail"
-                    :style="{ color: 'rgba(0,0,0,.25)' }"
-                  />
-                </a-input>
-              </a-form-model-item>
-            </a-col>
-            <a-col class="gutter-row" :span="8">
-              <a-button
-                class="getCaptcha"
-                tabindex="-1"
+          <a-form-model-item>
+              <a-input
+                size="large"
+                type="text"
+                placeholder="验证码"
+                v-model="formSms.captcha"
+              >
+                <a-icon
+                  slot="prefix"
+                  type="mail"
+                  :style="{ color: 'rgba(0,0,0,.25)' }"
+                />
+                <span
+                class="text-cursor"
+                slot="addonAfter"
                 :disabled="state.smsSendBtn"
                 v-text="
                   (!state.smsSendBtn && '获取验证码') || state.time + ' s'
                 "
-              ></a-button>
-            </a-col>
-          </a-row>
+              ></span>
+              </a-input>
+            </a-form-model-item>
+            <a-form-model-item class="user-login-other">
+              <span>其他登录方式</span>
+              <a>
+                <a-icon class="item-icon" type="alipay-circle"></a-icon>
+              </a>
+              <a>
+                <a-icon class="item-icon" type="taobao-circle"></a-icon>
+              </a>
+              <a>
+                <a-icon class="item-icon" type="weibo-circle"></a-icon>
+              </a>
+              <router-link class="register" :to="{ name: 'register' }"
+                >注册账户</router-link
+              >
+            </a-form-model-item>
+            <a-form-model-item>
+              <a-button
+                type="primary"
+                size="large"
+                :loading="loginBtn"
+                :disabled="loginBtn"
+                class="login-button"
+                @click="loginSms"
+                >登录</a-button
+              >
+            </a-form-model-item>
           </a-form-model>
         </a-tab-pane>
       </a-tabs>
@@ -110,12 +129,11 @@
 
 <script lang='ts'>
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { getApp } from "@/tcb";
-
-const app = getApp();
+import { login } from '@/api/user';
+import { setToken } from '@/utils/jscookie';
 
 @Component({
-  // components: { Button },
+  components: { },
   mixins: [],
 })
 export default class Login extends Vue {
@@ -145,21 +163,29 @@ export default class Login extends Vue {
     console.log("getter:", this.$store.getters.token);
     // mixins混入数据，可以做搜索条件
   }
-  // 登录
+  // 密码登录
   loginPass() {
-     this.$refs.formPass.validate( async (valid: any) => {
+     this.$refs.formPass.validate( async (valid: Boolean) => {
         if (valid) {
-          const param: any = {
-            name: "func_login",
-            data: {
-              ...this.formPass
-            },
-          };
           this.loginBtn = true;
-          const { result } = await app.callFunction(param);
-          
+          login({
+              ...this.formPass
+          }).then((result)=>{
+            const {code,data,msg} = result.result;
+            if(code == 200){
+              setToken(data);
+              this.$router.replace('/');
+            }else{
+              this.$message.error(msg);
+            }
+          }).catch(e=>{
+            this.loginBtn = false;
+          })
         }
      })
+  }
+  loginSms(){
+
   }
 }
 </script>
@@ -184,12 +210,6 @@ export default class Login extends Vue {
       text-align: center;
       padding: 10px 0;
       letter-spacing: 4px;
-    }
-
-    .getCaptcha {
-      display: block;
-      width: 100%;
-      height: 40px;
     }
 
     .forge-password {

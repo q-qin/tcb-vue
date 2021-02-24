@@ -8,12 +8,18 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta:{
+      title:'首页'
+    }
   },
   {
     path:'/user/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/User/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/User/Login.vue'),
+    meta:{
+      title:'登录'
+    }
   },
   {
     path: '/about',
