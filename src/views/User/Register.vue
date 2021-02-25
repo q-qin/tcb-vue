@@ -1,5 +1,5 @@
 <template>
-  <div>注册账户
+  <div>
     <hello-world msg="欢迎使用TCB" />
   </div>
 </template>

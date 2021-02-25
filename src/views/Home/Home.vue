@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <div>
-      欢迎使用修车系统
-    </div>
+    <a-button>开始</a-button>
   </div>
 </template>
 
