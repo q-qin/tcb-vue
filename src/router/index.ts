@@ -21,12 +21,21 @@ export const routes: Array<IRouteProps> = [
     name: 'Home',
     redirect:'/index',
     component: MainLayout,
-    meta:{title:'首页'},
     children:[{
-      path:'index',
+      path:'/index',
       name:'index',
-      meta:{title:'首页'},
+      meta:{title:'工作台',icon:'dashboard'},
       component: () => import(/* webpackChunkName: "home" */ '../views/Home/Home.vue'),
+    },{
+      path:'/usermgr',
+      name:'usermgr',
+      meta:{title:'员工管理',icon:'user'},
+      component: () => import(/* webpackChunkName: "Manage" */ '../views/Manage/User.vue'),
+    },{
+      path:'/about',
+      name:'about',
+      meta:{title:'帮助',icon:'question-circle'},
+      component: () => import(/* webpackChunkName: "home" */ '../views/Home/About.vue'),
     }]
   },
   {
@@ -47,17 +56,6 @@ export const routes: Array<IRouteProps> = [
     },
     hidden:true
   },
-  {
-    path: '/about',
-    name: 'About',
-    meta: {
-      title:'关于我们',
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home/About.vue')
-  }
 ]
 
 const router = new VueRouter({

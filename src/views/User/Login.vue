@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="user-layout-login">
-      <div class="title">XC管理系统</div>
+      <div class="title">修车管理系统V1.0</div>
       <a-tabs :tabBarStyle="{ textAlign: 'center', borderBottom: 'unset' }">
         <a-tab-pane key="tab1" tab="账号密码登录">
           <a-form-model ref="formPass" :model="formPass" :rules="rulesPass">

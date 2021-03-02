@@ -1,27 +1,23 @@
 <template>
   <div id="app">
-    <router-view/>
+    <a-config-provider :locale="zh_CN">
+      <router-view/>
+    </a-config-provider>
   </div>
 </template>
 
-<script>
-import HelloWorld from "./components/HelloWorld.vue";
+<script lang="ts">
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN';
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-  async created(){
-    // ***云数据库***
-    // const app = this.$cloudbase;
-    // await app.auth().anonymousAuthProvider().signIn();
-    // const db = app.database();
-    // const {data} = await db.collection('all_goods').where({title:'将进酒'}).get();
-    // console.log('云数据库,返回 --> ', data);
-  },
-};
+@Component
+export default class App extends Vue {
+  zh_CN = zh_CN
+}
 </script>
 
 <style lang="scss">
+  .g2{
+    margin: auto;
+  }
 </style>
