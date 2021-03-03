@@ -18,6 +18,7 @@ export default class App extends Vue {
 
 <style lang="scss">
   .g2{
+    width: 100%;
     margin: auto;
   }
 </style>

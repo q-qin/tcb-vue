@@ -4,18 +4,18 @@
     <div v-else>
       <a-card>
         <a-form layout="inline">
-          <a-form-item label="姓名">
+          <a-form-item label="名称">
             <a-input
               v-model="form.name"
               allowClear
-              placeholder="请输入姓名"
+              placeholder="请输入配件名称"
             ></a-input>
           </a-form-item>
           <a-form-item>
             <a-button type="primary" @click="search">查询</a-button>
           </a-form-item>
           <a-form-item>
-            <a-button type="danger" icon="plus" @click="add">新增员工</a-button>
+            <a-button type="danger" icon="plus" @click="add">新增配件</a-button>
           </a-form-item>
         </a-form>
       </a-card>
@@ -36,42 +36,14 @@
       @cancel="visible = false;"
     >
       <a-form-model ref="formEdit" :model="formEdit" :rules="rulesForm">
-        <a-form-model-item label="姓名" prop="name">
-          <a-input placeholder="请输入姓名" v-model="formEdit.name"></a-input>
+        <a-form-model-item label="配件名称" prop="name">
+          <a-input placeholder="请输入配件名称" v-model="formEdit.name"></a-input>
         </a-form-model-item>
-        <a-form-model-item label="修车水平" prop="level">
-          <a-select  placeholder="请选择" v-model="formEdit.level">
-            <a-select-option value="初级修理工">
-              初级修理工
-            </a-select-option>
-            <a-select-option value="中级修理工">
-              中级修理工
-            </a-select-option>
-            <a-select-option value="高级修理工">
-              高级修理工
-            </a-select-option>
-          </a-select>
+        <a-form-model-item label="成本价格" prop="money">
+          <a-input placeholder="请输入成本价格" v-model="formEdit.money"></a-input>
         </a-form-model-item>
-        <a-form-model-item label="擅长领域" prop="goodat">
-          <a-select  placeholder="请选择" v-model="formEdit.goodat">
-            <a-select-option value="钣金">
-              钣金
-            </a-select-option>
-            <a-select-option value="喷漆">
-              喷漆
-            </a-select-option>
-            <a-select-option value="发动机">
-              发动机
-            </a-select-option>
-          </a-select>
-        </a-form-model-item>
-        <a-form-model-item label="修车年限">
-          <a-input-number
-            style="width:100%"
-            :min="0"
-            :max="100"
-            v-model="formEdit.jobyear"
-          />
+        <a-form-model-item label="库存" prop="count">
+          <a-input placeholder="请输入库存" v-model="formEdit.count"></a-input>
         </a-form-model-item>
       </a-form-model>
     </a-modal>
@@ -80,10 +52,10 @@
 
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
-import { get, update, remove } from '@/api/user';
+import { get, update, remove } from '@/api/spare';
 
 @Component
-export default class User extends Vue {
+export default class Spare extends Vue {
   loaded = false;
   private async created() {
     setTimeout(() => {
@@ -105,10 +77,9 @@ export default class User extends Vue {
     showTotal: (total: string) => `共有 ${total} 条数据`
   }
   columns = [
-    { title: "姓名", dataIndex: "name" },
-    { title: "等级", dataIndex:'level' },
-    { title: "擅长领域", dataIndex:'goodat' },
-    { title: "工作年限", dataIndex:'jobyear' },
+    { title: "配件名称", dataIndex: "name" },
+    { title: "成本价格", dataIndex:'money' ,customRender: (text:string)=>`￥${text}`,},
+    { title: "库存", dataIndex:'count' },
     { title: "操作",dataIndex:'id',scopedSlots: { customRender: 'action' }, },
   ];
   
@@ -130,22 +101,20 @@ export default class User extends Vue {
   formEdit = {
     _id:undefined,
     name:'',
-    level:undefined,
-    goodat:undefined,
-    jobyear:10,
+    money:'',
+    count:'',
   };
   rulesForm = {
-    name:[{required: true, message: '请输入姓名', trigger: 'blur' }],
-    level:[{required: true, message: '请选择等级', trigger: 'blur' }],
-    goodat:[{required: true, message: '请选择擅长领域', trigger: 'blur' }]
+    name:[{required: true, message: '请输入配件名称', trigger: 'blur' }],
+    money:[{required: true, message: '请输入成本价', trigger: 'blur' }],
+    count:[{required: true, message: '请输入库存', trigger: 'blur' }]
   };
   add(){
     this.formEdit = {
-      _id:undefined,
+      _id:undefined, 
       name:'',
-      level:undefined,
-      goodat:undefined,
-      jobyear:10,
+      money:'',
+      count:'',
     }
     this.visible = true;
   }
@@ -174,7 +143,7 @@ export default class User extends Vue {
   del(id:string){
     this.$confirm({
       title: '提示',
-      content:'确定删除这个员工吗？',
+      content:'确定删除这个配件吗？',
       onOk:async ()=> {
         await remove(id);
         this.$message.success('删除成功~')

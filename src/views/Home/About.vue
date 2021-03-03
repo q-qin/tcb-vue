@@ -11,13 +11,19 @@
         ant.design
       </a-descriptions-item>
       <a-descriptions-item label="使用帮助" span="3">
-        1. 登录 admin / admin <br>
-        2. 报表 查看走势<br>
-        3. 表单 增删改查<br>
-        ...
+        <p>1. 登录 admin / admin </p>
+        <p>2. 工作台 —— 查看报表等</p>
+        <p>3. 修车登记 —— 登记客户车型，损坏程度等</p>
+        <p>4. 修车工单 —— 分配修理工，开始接活</p>
+        <p>5. 申领配件 —— 修理工根据车辆损坏情况，申领配件</p>
+        <p>6. 开具发票 —— 修车完成后，客户付钱，修车公司开具发票</p>
+        <p>7. 员工管理 —— 审核新注册员工和认证修理工等级，账号停/启用等</p>
+        <p>8. 车型维护 —— 维护车型基本信息</p>
+        <p>9. 配件维护 —— 维护配件基本信息</p>
       </a-descriptions-item>
       <a-descriptions-item label="参考资料">
-        1. 《Javascript从入门到放弃》
+        <p>1. 《Javascript从入门到放弃》</p>
+        <p>2. ...</p>
       </a-descriptions-item>
     </a-descriptions>
   </div>

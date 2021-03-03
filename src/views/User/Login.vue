@@ -40,7 +40,7 @@
                 <a-icon class="item-icon" type="weibo-circle"></a-icon>
               </a>
               <router-link class="register" to="/user/register"
-                >注册账户</router-link
+                ><a-icon type="link" /> 注册账户</router-link
               >
             </a-form-model-item>
             <a-form-model-item>
@@ -106,7 +106,7 @@
                 <a-icon class="item-icon" type="weibo-circle"></a-icon>
               </a>
               <router-link class="register" to="/user/register"
-                >注册账户</router-link
+                ><a-icon type="link" /> 注册账户</router-link
               >
             </a-form-model-item>
             <a-form-model-item>

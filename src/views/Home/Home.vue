@@ -9,16 +9,20 @@
       ></div>
       <div class="flex justify-around">
         <a-statistic
-          title="今日订单数"
-          :value="29"
-          style="margin-right: 50px"
+          title="今日工单"
+          :value="36"
+          suffix="单"
         ></a-statistic>
-
         <a-statistic
-          title="本月订单数"
+          title="剩余工单"
+          :value="12"
+          suffix="单"
+        ></a-statistic>
+        <a-statistic
+          title="本月工单"
           :value="280"
-          :value-style="{ color: '#cf1322' }"
-          style="margin-right: 50px"
+          suffix="单"
+          :value-style="{ color: '#3f8600' }"
         >
           <template #prefix>
             <a-icon type="arrow-down" />
@@ -30,7 +34,7 @@
           :value="90000"
           :precision="2"
           suffix="￥"
-          :value-style="{ color: '#3f8600' }"
+          :value-style="{ color: '#cf1322' }"
         >
           <template #prefix>
             <a-icon type="arrow-up" />
@@ -55,30 +59,26 @@ export default class Home extends Vue {
       this.loaded = true;
       let myChart = echarts.init(this.$refs.line as HTMLCanvasElement);
       const option = {
+        title:{
+          text:'近7天修理工单'
+        },
+        tooltip:{},
         xAxis: {
           type: "category" as "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          data: ["6天前", "5天前", "4天前", "3天前", "2天前", "1天前", "今日"],
         },
         yAxis: {
           type: "value" as "value",
         },
         series: [
           {
-            data: [150, 230, 224, 218, 135, 147, 260],
-            type: "line" as "line",
+            name:'工单数(单)',
+            data: [15, 20, 32, 18, 35, 47, 36],
+            type: "line" as "line"
           },
         ],
       };
       myChart.setOption(option);
-      window.addEventListener(
-        "resize",
-        () => {
-          setTimeout(() => {
-            myChart.resize();
-          }, 1e2);
-        },
-        { passive: true }
-      );
     }, 1e3);
   }
 }
