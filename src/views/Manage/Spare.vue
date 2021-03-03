@@ -80,7 +80,7 @@ export default class Spare extends Vue {
     { title: "配件名称", dataIndex: "name" },
     { title: "成本价格", dataIndex:'money' ,customRender: (text:string)=>`￥${text}`,},
     { title: "库存", dataIndex:'count' },
-    { title: "操作",dataIndex:'id',scopedSlots: { customRender: 'action' }, },
+    { title: "操作",dataIndex:'_id',scopedSlots: { customRender: 'action' }, },
   ];
   
   search(){
