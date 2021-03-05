@@ -28,8 +28,8 @@ export function login(data:any) {
   })
 }
 
-export function get(name:string) :any {
-  return new Promise<{}>(async(resolve,reject)=>{
+export function get(name:string) {
+  return new Promise<any>(async(resolve,reject)=>{
     try{
       const db = app.database();
       const condition = name?{name:name}:{};
@@ -42,7 +42,7 @@ export function get(name:string) :any {
   })
 }
 
-export function update(param:any) :any {
+export function update(param:any) {
   return new Promise<{}>(async(resolve,reject)=>{
     try{
       const db = app.database();
@@ -65,7 +65,7 @@ export function update(param:any) :any {
   })
 }
 
-export function remove(_id:string) :any {
+export function remove(_id:string) {
   return new Promise<{}>(async(resolve,reject)=>{
     try{
       const db = app.database();

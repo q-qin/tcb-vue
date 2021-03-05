@@ -85,7 +85,7 @@ import { get, update, remove } from '@/api/user';
 @Component
 export default class User extends Vue {
   loaded = false;
-  private async created() {
+  created() {
     setTimeout(() => {
       this.loaded = true;
       this.getList()

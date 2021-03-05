@@ -73,7 +73,7 @@ import { get, update, remove } from '@/api/car';
 @Component
 export default class Car extends Vue {
   loaded = false;
-  private async created() {
+  created() {
     setTimeout(() => {
       this.loaded = true;
       this.getList();

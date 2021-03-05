@@ -53,8 +53,7 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Home extends Vue {
   loaded = false;
 
-  // created
-  private async mounted() {
+  mounted() {
     setTimeout(() => {
       this.loaded = true;
       let myChart = echarts.init(this.$refs.line as HTMLCanvasElement);

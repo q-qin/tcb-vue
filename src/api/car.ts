@@ -2,8 +2,8 @@ import {getApp} from '@/tcb';
 import { notification } from 'ant-design-vue';
 const app = getApp();
 
-export function get(model:string) :any {
-  return new Promise<{}>(async(resolve,reject)=>{
+export function get(model:string) {
+  return new Promise<any>(async(resolve,reject)=>{
     try{
       const db = app.database();
       const condition = model?{model:model}:{};
@@ -16,20 +16,20 @@ export function get(model:string) :any {
   })
 }
 
-export function update(param:any) :any {
+export function update(param:any) {
   return new Promise<{}>(async(resolve,reject)=>{
     try{
       const db = app.database();
-      let res = {};
+      let data = {};
       if(!param._id){
-        res = await db.collection('all_cars').add({...param})
+        data = await db.collection('all_cars').add({...param})
       }else{
-        res = await db.collection('all_cars').doc(param._id).update({
+        data = await db.collection('all_cars').doc(param._id).update({
           model:param.model,
           brand:param.brand
         })
       }
-      resolve(res)
+      resolve(data)
     }catch(e){
       notification.error({ message: '服务器异常',description:e.message })
       reject()
@@ -37,12 +37,12 @@ export function update(param:any) :any {
   })
 }
 
-export function remove(_id:string) :any {
+export function remove(_id:string) {
   return new Promise<{}>(async(resolve,reject)=>{
     try{
       const db = app.database();
-      const res = await db.collection('all_cars').doc(_id).remove()
-      resolve(res);
+      const data = await db.collection('all_cars').doc(_id).remove()
+      resolve(data);
     }catch(e){
       notification.error({ message: '服务器异常',description:e.message })
       reject()

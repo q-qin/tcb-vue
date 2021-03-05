@@ -7,8 +7,8 @@
         <template v-for="route in routes">
           <a-menu-item  :key="route.path" v-if="!route.hidden">
             <router-link :to="route.path" >
-                <a-icon :type="route.meta.icon?route.meta.icon:' '" />
-                <span>{{route.meta.title || ' '}}</span>
+                <a-icon :type="route.meta.icon" />
+                <span>{{route.meta.title}}</span>
             </router-link>
           </a-menu-item>
         </template>
@@ -45,12 +45,12 @@
           <a-breadcrumb-item>首页</a-breadcrumb-item>
           <a-breadcrumb-item>工作台</a-breadcrumb-item>
         </a-breadcrumb>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px', minWidth:'800px' }">
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '300px', minWidth:'800px' }">
           <router-view />
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
-        develop by q-qin <a href="https://www.github.com/q-qin/tcb-vue" target="_blank">Github</a>
+        develop by q-qin <a href="https://www.github.com/q-qin/tcb-vue" target="_blank"><a-icon type="link" />Github</a>
       </a-layout-footer>
     </a-layout>
   </a-layout>

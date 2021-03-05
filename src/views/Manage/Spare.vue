@@ -57,7 +57,7 @@ import { get, update, remove } from '@/api/spare';
 @Component
 export default class Spare extends Vue {
   loaded = false;
-  private async created() {
+  created() {
     setTimeout(() => {
       this.loaded = true;
       this.getList()
