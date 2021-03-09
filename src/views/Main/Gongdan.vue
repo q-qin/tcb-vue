@@ -121,8 +121,8 @@ export default class Gongdan extends Vue {
   workerList:any = [];
   workerCols = [{title:'姓名',dataIndex:'name'},
     { title: "等级", dataIndex:'level' },
-    { title: "擅长领域", dataIndex:'goodat' },
-    { title: "工作年限", dataIndex:'jobyear' },]
+    { title: "擅长领域", dataIndex:'goodat',customRender: (text:string)=>`${text}`},
+    { title: "工作年限", dataIndex:'jobyear',customRender: (text:string)=>`${text}年` },]
   async getWorkers(){
     const data = await getWorkers('');
     this.workerList = data;

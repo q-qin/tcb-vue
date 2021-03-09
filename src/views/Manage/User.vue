@@ -53,7 +53,7 @@
           </a-select>
         </a-form-model-item>
         <a-form-model-item label="擅长领域" prop="goodat">
-          <a-select  placeholder="请选择" v-model="formEdit.goodat">
+          <a-select mode="multiple" placeholder="请选择" v-model="formEdit.goodat">
             <a-select-option value="钣金">
               钣金
             </a-select-option>
@@ -107,8 +107,8 @@ export default class User extends Vue {
   columns = [
     { title: "姓名", dataIndex: "name" },
     { title: "等级", dataIndex:'level' },
-    { title: "擅长领域", dataIndex:'goodat' },
-    { title: "工作年限", dataIndex:'jobyear' },
+    { title: "擅长领域", dataIndex:'goodat',customRender: (text:string)=>`${text}`},
+    { title: "工作年限", dataIndex:'jobyear',customRender: (text:string)=>`${text}年` },
     { title: "操作",dataIndex:'id',scopedSlots: { customRender: 'action' }, },
   ];
   
