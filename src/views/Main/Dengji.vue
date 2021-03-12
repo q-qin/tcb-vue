@@ -281,6 +281,6 @@ export default class Dengji extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
 </style>

@@ -84,7 +84,7 @@ export default class Layout extends Vue {
   }
 }
 </script>
-<style lang="scss">
+<style lang="less">
    .logo {
     height: 32px;
     background: rgba(255, 255, 255, 0.2);

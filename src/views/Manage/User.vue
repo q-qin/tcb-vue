@@ -184,6 +184,6 @@ export default class User extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
   
 </style>

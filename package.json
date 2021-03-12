@@ -14,6 +14,8 @@
     "ant-design-vue": "^1.7.3",
     "core-js": "^3.6.5",
     "echarts": "^5.0.2",
+    "less": "^4.1.1",
+    "less-loader": "6",
     "sass": "^1.32.8",
     "sass-loader": "^8.0.2",
     "tcb-js-sdk": "^1.10.10",
@@ -72,7 +74,19 @@
   "vue": {
     "publicPath": "/vue/",
     "devServer": {
-      "port": 5000
+      "port": 3000
+    },
+    "css": {
+      "loaderOptions": {
+        "less": {
+          "lessOptions": {
+            "modifyVars": {
+              "border-radius-base": "2px"
+            },
+            "javascriptEnabled": true
+          }
+        }
+      }
     }
   }
 }

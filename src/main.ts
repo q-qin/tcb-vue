@@ -3,8 +3,8 @@ import Antd from 'ant-design-vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import 'ant-design-vue/dist/antd.css';
-import '@/styles/index.scss' // global css
+import 'ant-design-vue/dist/antd.less';
+import '@/styles/index.less' // global css
 import './permission'
 
 Vue.config.productionTip = false

@@ -6,7 +6,7 @@
         <a-tab-pane key="tab1" tab="账号密码登录">
           <a-form-model ref="formPass" :model="formPass" :rules="rulesPass">
             <a-form-model-item prop="username">
-              <a-input size="large" placeholder="账户: admin" v-model="formPass.username">
+              <a-input placeholder="账户: admin" v-model="formPass.username">
                 <a-icon
                   slot="prefix"
                   type="user"
@@ -17,7 +17,6 @@
 
             <a-form-model-item prop="password">
               <a-input-password
-                size="large"
                 placeholder="密码: admin"
                 v-model="formPass.password"
               >
@@ -46,7 +45,6 @@
             <a-form-model-item>
               <a-button
                 type="primary"
-                size="large"
                 :loading="loginBtn"
                 :disabled="loginBtn"
                 class="login-button"
@@ -60,7 +58,6 @@
           <a-form-model>
             <a-form-model-item>
             <a-input
-              size="large"
               type="text"
               placeholder="手机号"
               v-model="formSms.mobile"
@@ -74,7 +71,6 @@
           </a-form-model-item>
           <a-form-model-item>
               <a-input
-                size="large"
                 type="text"
                 placeholder="验证码"
                 v-model="formSms.captcha"
@@ -113,7 +109,6 @@
             <a-form-model-item>
               <a-button
                 type="primary"
-                size="large"
                 :loading="loginBtn"
                 :disabled="loginBtn"
                 class="login-button"
@@ -184,7 +179,6 @@ export default class Login extends Vue {
   }
   time = 0;
   sendSms (){
-    debugger
     if (this.state.smsSendBtn) {
         // 判断是否开始倒计时，避免重复点击
         return false;
@@ -206,7 +200,7 @@ export default class Login extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .main {
   background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
   height: 100%;
@@ -233,10 +227,7 @@ export default class Login extends Vue {
       font-size: 14px;
     }
 
-    button.login-button {
-      padding: 0 15px;
-      font-size: 16px;
-      height: 40px;
+    .login-button {
       width: 100%;
     }
 

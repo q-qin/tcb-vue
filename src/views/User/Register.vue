@@ -10,7 +10,7 @@
       </a-steps>
       <a-form-model ref="formPass" :model="formPass" :rules="rulesPass" v-show="step== 0">
         <a-form-model-item prop="username">
-          <a-input size="large" placeholder="用户名" v-model="formPass.username">
+          <a-input placeholder="用户名" v-model="formPass.username">
             <a-icon
               slot="prefix"
               type="user"
@@ -20,7 +20,6 @@
         </a-form-model-item>
         <a-form-model-item prop="password">
           <a-input-password
-            size="large"
             placeholder="密码"
             v-model="formPass.password"
           >
@@ -34,7 +33,6 @@
         <a-form-model-item>
           <a-button
             type="primary"
-            size="large"
             :loading="registerBtn"
             :disabled="registerBtn"
             class="register-button"
@@ -111,7 +109,7 @@ export default class Register extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .main {
   background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
   height: 100%;
@@ -134,9 +132,6 @@ export default class Register extends Vue {
       letter-spacing: 4px;
     }
     button.register-button {
-      padding: 0 15px;
-      font-size: 16px;
-      height: 40px;
       width: 100%;
     }
   }

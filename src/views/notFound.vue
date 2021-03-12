@@ -19,6 +19,6 @@ export default class notFound extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
 </style>

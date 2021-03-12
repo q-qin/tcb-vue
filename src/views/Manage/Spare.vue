@@ -153,6 +153,6 @@ export default class Spare extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
   
 </style>
