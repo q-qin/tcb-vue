@@ -87,6 +87,7 @@
                 <span
                 class="text-cursor"
                 slot="addonAfter"
+                @click="sendSms"
                 :disabled="state.smsSendBtn"
                 v-text="
                   (!state.smsSendBtn && '获取验证码') || state.time + ' s'
@@ -166,23 +167,42 @@ export default class Login extends Vue {
       if (valid) {
         this.loginBtn = true;
         login({
-            ...this.formPass
+            ...this.formPass,type:'1'
         }).then((result)=>{
           const {code,data,msg} = (result as any ).result;
+          this.loginBtn = false;
           if(code == 200){
             setToken(data);
             this.$router.replace('/');
           }else{
             this.$message.error(msg);
-            this.loginBtn = false;
           }
         }).catch(e=>{
           this.loginBtn = false;
         })
       }
   }
+  time = 0;
+  sendSms (){
+    debugger
+    if (this.state.smsSendBtn) {
+        // 判断是否开始倒计时，避免重复点击
+        return false;
+      }
+      this.$notification.success({message:'已发送',description:'验证码：123456'})
+      this.state.smsSendBtn = true;
+      this.time = 60;
+      const countDown = setInterval(() => {
+        this.time --;
+        if (this.time <= 0) {
+          this.state.smsSendBtn = false;
+          clearInterval(countDown);
+        }
+      }, 1000);
+  }
   loginSms(){
-
+    setToken('xc-13800138001')
+    this.$router.replace('/');
   }
 }
 </script>
