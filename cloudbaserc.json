@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "envId": "tcloud-4gcrbmh247bb85e3",
+  "envId": "tcb-9gexqqgc086482f0",
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
   "functionRoot": "cloudfunctions",
   "framework": {
